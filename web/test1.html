@@ -1,0 +1,2345 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<title id="browserTitleArea">
+
+
+SBS :: 네이버뉴스
+</title>
+		
+
+
+<script>
+	function isMobileDevice() {
+		return /^.*(iPhone|iPod|iPad|Android).*/.test(navigator.userAgent);
+	}
+</script>
+<script>
+	(function () {
+		try {
+			if (isMobileDevice() && isAbleApplyPrefersColorScheme()) {
+				
+				document.querySelector("html").classList.add("DARK_THEME");
+			}
+		} catch(e) {}
+
+		function isAbleApplyPrefersColorScheme() {
+			
+			if (window.matchMedia("(prefers-color-scheme)").matches === false) {
+				return false;
+			}
+
+			var userAgent = navigator.userAgent;
+
+			if (userAgent.indexOf("NAVER") > -1) {
+				
+				if (/.*NAVER\([a-zA-Z]*;\s[a-zA-Z]*;\s([0-9]*);/.test(userAgent)) {
+					return Number(RegExp.$1) >= 1000;
+				}
+			} else {
+				
+				return document.cookie.indexOf("NSCS=1") > -1;
+			}
+
+			return false;
+		}
+	})();
+</script>
+
+		<script>
+		var g_ssc = 'news.v3_press' || null;
+		</script>
+		<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi"/>
+<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static.news/mnews/resources/20220120_122848/css/generated/other.css" />
+			<link rel="shortcut icon" type="image/x-icon" href="https://mimgnews.pstatic.net/image/news/m/2014/favicon/favicon.ico" />
+<script>
+	(function(){
+		var userAgent = navigator.userAgent;
+		var result = [];
+
+		if(userAgent.indexOf('Android') > -1){
+			result = [
+				'<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://ssl.pstatic.net/static.news/image/news/m/2018/favicon/06/android_legacy_hdpi_72X72.png" />',
+				'<link rel="apple-touch-icon-precomposed" sizes="96x96" href="https://ssl.pstatic.net/static.news/image/news/m/2018/favicon/06/android_legacy_xhdpi_96x96.png" />',
+				'<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ssl.pstatic.net/static.news/image/news/m/2018/favicon/06/android_legacy_xxhpdi_144x144.png" />',
+				'<link rel="apple-touch-icon-precomposed" sizes="192x192" href="https://ssl.pstatic.net/static.news/image/news/m/2018/favicon/06/android_legacy_xxxhpdi_192x192.png" />'
+			];
+		}else if(userAgent.indexOf('iPhone') > -1){
+			result = [
+				'<link rel="apple-touch-icon-precomposed" sizes="120X120" href="https://ssl.pstatic.net/static.news/image/news/m/2018/favicon/06/iOS_iPhone_2x_120X120.png" />',
+				'<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://ssl.pstatic.net/static.news/image/news/m/2018/favicon/06/iOS_iPhone_3x_180X180.png" />'
+			];
+		}else if(userAgent.indexOf('iPad') > -1){
+			result = [
+				'<link rel="apple-touch-icon-precomposed" sizes="167x167" href="https://ssl.pstatic.net/static.news/image/news/m/2018/favicon/06/iOS_iPadPro_2x_167X167.png" />',
+				'<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://ssl.pstatic.net/static.news/image/news/m/2018/favicon/06/iOS_iPad_2x_152X152.png" />'
+			];
+		}
+		document.write(result.join('\n'));
+	})();
+</script>
+
+<script type="text/javascript" src="https://ssl.pstatic.net/static.news/mnews/resources/20220120_122848/js/generated/statistics_jquery.js"></script>
+	
+
+<script>
+
+document.documentElement.setAttribute('data-useragent', navigator.userAgent);
+
+
+function showNoImage(elImg, type) {
+    switch (type) {
+        
+        case "remove":
+            try {
+                elImg.parentNode.removeChild(elImg);
+            } catch(e) {}
+            break;
+
+        
+        case "removeParent":
+            try {
+                elImg.parentNode.outerHTML = '';
+            } catch(e) {}
+            break;
+
+        
+        case "alt":
+            elImg.outerHTML = ('<span class="noimage_text {imgClassName}">' + (elImg.alt || "") + '</span>')
+                
+                .replace('{imgClassName}', elImg.className);
+            break;
+
+        
+        default:
+            
+            elImg.outerHTML = Number(elImg.getAttribute("height")) > 0?
+                
+                '<span class="noimage_wrap" style="height:' + elImg.getAttribute("height") + 'px;"><span class="noimage"></span></span>':
+                '<span class="noimage_wrap"><span class="noimage"></span></span>';
+    }
+}
+
+
+function doAfterLoadEnd(callback, callbackOnPersisted) {
+    var eventName = "onpageshow" in window ? "pageshow" : "load";
+
+    callback = callback || function(){};
+    callbackOnPersisted = callbackOnPersisted || function(){};
+
+    window.addEventListener(eventName, function(e) {
+        try{
+            if(Boolean(e.persisted)){  
+                callbackOnPersisted();
+                return;
+            }
+        }catch(e){}
+
+        callback();
+    });
+}
+</script>
+		
+
+
+
+    
+        
+        
+            <script type="text/javascript" src="https://ssl.pstatic.net/static.news/mnews/resources/20220120_122848/js/generated/news.mobile.js"></script>
+        
+            <script type="text/javascript" src="https://ssl.pstatic.net/static.news/mnews/resources/20220120_122848/js/generated/presshome.dependency.js"></script>
+        
+    
+    
+
+<script>
+    (function() {
+        var path = location.pathname;
+        var isLiveUrl = path.indexOf('/press/' + '055/live') >= 0;
+        var agentInfo = news.Util.getAgentInfo();
+        var isAndroidMobile = agentInfo.bIsAndroid && agentInfo.bMobileOrTablet;
+        var isLiveViewer = agentInfo.bIsLiveViewer;
+
+        if (isLiveUrl && isAndroidMobile && isLiveViewer) {
+            document.querySelector('html').classList.add('NAVER_APP_LIVE_VIEWER');
+        }
+    })();
+</script>
+
+<script>
+function goMainChannelUrl() {
+    if (isMobileDevice()) {
+        return news.Util.goMainChannel();
+    } else {
+        return window.location = "https://news.naver.com";
+    }
+}
+</script>
+
+		<meta property="og:title"			content="SBS 언론사홈"/>
+<meta property="og:type"			content="website"/>
+<meta property="og:url"				content="https://media.naver.com/press/055"/>
+<meta property="og:image"			content="https://mimgnews.pstatic.net/image/upload/office_logo/055/2017/12/21/logo_055_41_20171221171121.jpg"/>
+<meta property="og:description"		content="언론사 주요 뉴스와 속보를 만나볼 수 있습니다."/>
+<meta property="og:article:author"	content="네이버"/>
+<meta name="twitter:card"			content="summary">
+<meta name="twitter:title"			content="SBS 언론사홈">
+<meta name="twitter:site"			content="네이버 뉴스">
+<meta name="twitter:creator"		content="네이버 뉴스">
+<meta name="twitter:image"			content="https://mimgnews.pstatic.net/image/upload/office_logo/055/2017/12/21/logo_055_41_20171221171121.jpg">
+<meta name="twitter:description"	content="언론사 주요 뉴스와 속보를 만나볼 수 있습니다.">
+		<script>
+    
+    (function () {
+        var isUnderIE10 = navigator.appName === "Microsoft Internet Explorer";
+        if (!isUnderIE10) {
+            var script = document.createElement("script");
+            script.async = true;
+            script.src = "https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js";
+            document.head.appendChild(script);
+        }
+    })();
+
+    
+    window.gladsdk = window.gladsdk || { cmd: [] };
+    gladsdk.cmd.push(function () {
+        
+        gladsdk.setGlobalConfig({
+            enablePersistAd: true
+        });
+
+        
+        var adUnits = [];
+    
+        adUnits.push({
+            adUnitId: "m_news",
+            adSlotElementId: "nmap_press_home",
+            customParam: {
+                calp: "nhome",
+                oid: "055",
+                directSalesPct : 0
+            }
+        });
+    
+        for (let i = 0; i < adUnits.length; i++) {
+            gladsdk.defineAdSlot(adUnits[i]);
+        }
+
+        
+        var htmlClass = document.querySelector("html").getAttribute("class");
+        if (htmlClass && htmlClass.indexOf("DARK_THEME") > -1) {
+            gladsdk.setHostMeta("theme", "system");
+        }
+    });
+</script>
+
+	</head>
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+<body class="a body_press as_body_type_a  _font_size_setting_target" style="color: #0B3F62;">
+	<script>
+    (function(){
+        try{
+            var settingTarget = document.querySelector('._font_size_setting_target');
+            var defaultFontSize = /(?:\s|^)?NFS=(\d)(?:;|$)/.test(document.cookie)? RegExp.$1: '2';
+            var newFontSizeClass = 'bfsize' + (parseInt(defaultFontSize)-1);
+            if(newFontSizeClass === 'bfsize0') {
+            	return;
+			}
+
+            settingTarget.className = settingTarget.className + " " + newFontSizeClass;
+        }catch(e){}
+    })();
+    </script>
+	<div class="u_skip"><a href="#ct">본문 바로가기</a></div>
+    
+
+
+
+
+
+
+
+
+
+
+<section class="news_header as_white_type">
+    <header class="nh_header" role="banner">
+        <div class="Ngnb">
+            <div class="Ngnb_inner">
+                <div class="Ngnb_both">
+                    <div class="Ngnb_left">
+                        <span class="Ngnb_logo"><a href="https://m.naver.com" data-mpurl='{"m":"https://m.naver.com","p":"https://www.naver.com"}' class="Nlogo_link" onclick="nclk(event,'gnb.naver','','');"><span class="Nicon_logo">NAVER</span></a></span>
+                        <div class="Ngnb_service">
+                            <h1 class="Nservice_item">
+                                <a href="https://news.naver.com/main" onclick="nclk(event,'gnb.news','','');">
+                                    <span class="Nicon_service ">뉴스</span>
+                                </a>
+                            </h1>
+                            
+                            
+                            <span class="Nservice_subitem">
+								<a href="https://m.entertain.naver.com/home" data-mpurl='{"m":"https://m.entertain.naver.com/home","p":"https://entertain.naver.com/home"}' onclick="nclk(event,'gnb.enter','','');">
+									<span class="Nicon_family Nicon_entertain">연예</span>
+								</a>
+							</span>
+                            
+                            
+                            <span class="Nservice_subitem">
+								<a href="https://m.sports.naver.com/" data-mpurl='{"m":"https://m.sports.naver.com/","p":"https://sports.news.naver.com/index"}' onclick="nclk(event,'gnb.sports','','');">
+									<span class="Nicon_family Nicon_sports">스포츠</span>
+								</a>
+							</span>
+                            
+                            <span class="Nservice_subitem">
+								<a href="https://weather.naver.com/" onclick="nclk(event,'gnb.weather','','');">
+									<span class="Nicon_family Nicon_weather">날씨</span>
+								</a>
+							</span>
+                            <span class="Nservice_subitem">
+								<a href="https://contents.premium.naver.com/" onclick="nclk(event,'gnb.premium','','');">
+									<span class="Nicon_family Nicon_premium">프리미엄</span>
+								</a>
+							</span>
+                            <span class="Nservice_subitem">
+                                <a href="https://m.sports.naver.com/beijing2022/index" onclick="nclk(event,'gnb.beijing','','');">
+                                    <span class="Nicon_family Nicon_olympic">올림픽</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    
+<div class="Ngnb_right">
+    <div class="Ngnb_group">
+        <div id="gnb" class="gnb_dark_type2"></div>
+    </div>
+    <div class="Ngnb_search is_hidden _search_content"> 
+        <form action="https://m.search.naver.com/search.naver" class="_search_form" method="get" role="search" target="_blank" accept-charset="utf-8">
+            <div class="_search_form_hidden_input">
+                <script type="text/template" class="_mobile">
+                    <input type="hidden" name="where" value="m_news">
+                    <input type="hidden" name="ie" value="utf8">
+                    <input type="hidden" name="sm" value="mns_hty">                
+                </script>
+                <script type="text/template" class="_pc">
+                    <input type="hidden" name="where" value="news">
+                    <input type="hidden" name="ie" value="utf8">
+                    <input type="hidden" name="sm" value="nws_hty">
+                </script>
+                <script>
+                
+                (function() {
+                    var wrapper = document.querySelector("._search_form_hidden_input");
+                    var template = isMobileDevice()?
+                        wrapper.querySelector("._mobile"):
+                        wrapper.querySelector("._pc");
+
+                    wrapper.innerHTML = template.innerText;
+                })();
+                </script>
+            </div>
+            <div id="u_hs" class="u_hs ">
+                <div class="u_hsw">
+                    <div class="u_itw">
+                        <input type="search" name="query" title="검색어 입력" 
+                               class="u_it _search_input"
+                               placeholder="뉴스 검색" maxlength="255" autocomplete="off">
+                        
+                        <button type="button"
+                                class="u_clrt _search_input_clear_btn"
+                                style="display:none;" onclick="nclk(event,'gnb.schincl','','');">입력 내용 삭제</button>
+                        <button type="submit" class="u_hssbt u_hssbt_ss _submit_btn" onclick="nclk(event,'gnb.schn','','');"><span class="u_vc">뉴스검색</span></button>
+                    </div>
+                </div>
+                <button type="submit" class="u_hssbt_us _total_search_btn" onclick="nclk(event,'gnb.nx','','');">통합검색</button>
+                <button type="button" class="u_hssbt_close _close_btn" onclick="nclk(event,'gnb.schclose','','');">닫기</button>
+            </div>
+            <div class="u_atcp_wrap">
+                <div class="u_sggt_wrap2 _search_history is_hidden">
+                    <div class="sggt_fixer">
+                        <div class="sggt_header"><h2 class="tit">최근 검색어<a href="https://m.help.naver.com/support/contents/contentsView.nhn?contentsNo=4029&lang=ko" class="imsc ico_help" target="_blank">도움말</a></h2></div>
+                        <div class="sggt_container _contents"></div>
+                        <div class="sggt_footer">
+                            <span class="side_opt_area">
+                                <span class="opt_del _btn_remove_all"><a href="javascript:;">전체삭제</a></span>
+                                <span class="opt_off _btn_toggle_onoff"><a href="javascript:;" onclick="nclk(event,'gnb.saveoff','','');">자동저장 <span class="txt_off">끄기</span><span class="txt_on">켜기</span></a></span>
+                                <span class="opt_help"><a href="https://m.help.naver.com/support/contents/contentsView.nhn?contentsNo=4029&lang=ko" onclick="nclk(event,'gnb.help','','');" target="_blank">도움말</a></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="u_atcp_area _search_autocomplete" style="display:none;"> 
+                    <ul title="자동완성" class="u_atcp u_atcp_at _autocomplete_list"></ul>
+                    <div class="u_atcp_fc">
+                        <button type="button" class="u_atcp_fcb _autocomplete_toggle_btn">자동완성 끄기</button>
+                        <span class="u_atcp_dv">|</span>
+                        <a href="https://m.help.naver.com/support/service/main.help?serviceNo=5627" class="u_atcp_fcb" target="_blank">도움말</a>
+                        <span class="u_atcp_dv">|</span>
+                        <a href="https://m.help.naver.com/support/contents/contentsView.help?contentsNo=8950" class="u_atcp_report" target="_blank">신고</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <script>
+        
+        (function() {
+            try {
+                perform();
+            } catch(e) {}
+
+            function perform() {
+                if (isMobileDevice()) {
+                    return;
+                }
+                var searchUrlNews = "https://search.naver.com/search.naver";
+                var recentSearchKeywordHelp = "https://help.naver.com/support/search/searchResultHelp.help?searchText=%EC%B5%9C%EA%B7%BC%EA%B2%80%EC%83%89%EC%96%B4";
+                var autocompleteHelp = "https://help.naver.com/support/service/main.help?serviceNo=605&categoryNo=1987";
+                var autocompleteReport = "https://help.naver.com/support/contents/contents.help?serviceNo=605&categoryNo=18215";
+
+                var wrapper = document.querySelector("._search_content");
+
+                wrapper.querySelector("._search_form").action = searchUrlNews;
+                wrapper.querySelector("._search_history .sggt_header a").href = recentSearchKeywordHelp;
+                wrapper.querySelector("._search_history .opt_help a").href = recentSearchKeywordHelp;
+                wrapper.querySelector("._search_autocomplete a.u_atcp_fcb").href = autocompleteHelp;
+                wrapper.querySelector("._search_autocomplete a.u_atcp_report").href = autocompleteReport;
+            }
+        })();
+        </script>
+    </div>
+    <div class="Ngnb_tool">
+        <a href="javascript:;" class="Ntool_button _search_content_toggle_btn" onclick="nclk(event,'gnb.sch','','');"><span class="Nicon_search">검색</span></a>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+</section>
+
+<hr>
+	
+    
+    
+        
+    
+
+
+
+
+
+
+
+<div class="press_wrap">
+<div class="press_container">
+<section class="press_content">
+<h2 class="u_skip">언론사 개별 홈</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="press_hd as_type_a  _press_header" style="display:none;; color: #0B3F62;">
+	<div class="press_hd_bg" style="background-color: #007cde; color: #007cde;">
+		
+		
+		<div class="press_hd_bg_inner">
+			
+			<img src="https://imgnews.pstatic.net/image/upload/spubs/8gG0000055/cover/2020/12/10/A_104520500.jpg?type=u850_200" alt="" class="press_hd_bg_img" onerror="showNoImage(this, 'remove')">
+			
+			<i class="press_hd_bg_gradient_left"></i>
+			<i class="press_hd_bg_gradient_right"></i>
+		</div>
+	</div>
+	<a href="#" class="press_hd_prev _back_btn" onclick="nclk(event,'hom.back',055,'');">이전</a>
+	
+		<div class="press_hd_else _press_list_wrapper">
+			<a href="javascript:;" class="press_hd_else_button _press_list_btn" onclick="nclk(event,'hom.menu',055,'');">
+				<span class="u_hc">전체 언론사 홈</span>
+			</a>
+		</div>
+		
+	
+	<div class="press_hd_share">
+		
+		
+		<a href="#"  id="spiButton" class="naver-splugin spi_sns_share u_btn_sns_share" onclick="nclk(event,'hom.share',055,'');"
+		   data-style="standard"
+		   data-url="https://media.naver.com/press/055"
+		   data-title="SBS 언론사 페이지 :: 네이버"
+		   data-mail-url="https://media.naver.com/press/055?lfrom=mail"
+		   data-blog-url="https://media.naver.com/press/055?lfrom=blog"
+		   data-blog-source-type="3"
+		   data-blog-blog-id="naver"
+		   data-cafe-url="https://media.naver.com/press/055?lfrom=cafe"
+		   data-cafe-source-type="3"
+		   data-memo-url="https://media.naver.com/press/055?lfrom=memo"
+		   data-calendar-url="https://media.naver.com/press/055?lfrom=calendar"
+		   data-band-url="https://media.naver.com/press/055?lfrom=band"
+		   data-line-url="https://media.naver.com/press/055?lfrom=line"
+		   data-kakaotalk-url="https://media.naver.com/press/055?lfrom=kakao"
+		   data-kakaostory-display="off"
+		   data-kakaotalk-image-url="https://ssl.pstatic.net/static.news/image/news/m/2015/10/press_logo/055_1200x630.jpg"
+		   data-facebook-url="https://media.naver.com/press/055?lfrom=facebook"
+		   data-twitter-url="https://media.naver.com/press/055?lfrom=twitter"
+		   data-mypeople-url="https://media.naver.com/press/055?lfrom=mypeople"
+		   data-friend-display="on"
+		   data-friend-url="https://media.naver.com/press/055?lfrom=friend">
+			<span class="naver-splugin-c send_caption"><span class="u_hc">SNS 보내기</span></span>
+		</a>
+	</div>
+
+	<div class="press_hd_main">
+		<div class="press_hd_main_inner">
+			<div class="press_hd_ci" style="background-color: #0B3F62;">
+				
+				
+				<a href="/press/055" class="press_hd_ci_image" onclick="nclk(event,'hom.logo',055,'');">
+					
+						
+						
+						
+							<img src="https://imgnews.pstatic.net/image/upload/spubs/8gG0000055/logo/2020/12/10/A_090354116.jpg?type=u144_144" alt="SBS" onerror="showNoImage(this)">
+						
+					
+				</a>
+				
+				<a href="https://news.sbs.co.kr/" class="press_hd_ci_home" onclick="nclk(event,'hom.url',055,'');">홈페이지</a>
+				
+			</div>
+			<div class="press_hd_info">
+				<div class="press_hd_both">
+					<div class="press_hd_left">
+						<h3 class="press_hd_name">
+							<a href="https://news.sbs.co.kr/" class="press_hd_name_link" onclick="nclk(event,'hom.url',055,'');">
+								SBS<i class="press_hd_name_link_home"></i>
+							</a>
+						</h3>
+						
+						<p class="press_hd_desc">중심을 지키는 저널리즘</p>
+					</div>
+					<div class="press_hd_right">
+						
+						<div class="press_hd_subscribe_btnwrap _press_hd_subscribe_btnwrap"></div>
+						
+					</div>
+				</div>
+				
+					
+						
+						
+					
+					
+					<div class="press_hd_subscribe">
+						<em class="press_hd_subscribe_term _follower_label" style="display:none;">구독</em>
+						
+							<em class="press_hd_subscribe_num _channel_follower_count" style="display:none;">0</em>
+						
+						<span class="press_subscribe_badge _follower_count_million_badge" style="display:none;"></span>
+					</div>
+					
+				
+			</div>
+
+			
+				
+				<div class="press_profile">
+					<div class="pp_inner">
+						<h4 class="blind">언론사 정보</h4>
+						<div class="pp_rel">
+							<h5 class="blind">연관 채널</h5>
+							<a href="javascript:;" class="pp_rel_desc _toggle_profile_btn" data-officeid="055" data-clickcode-toggle-open="hom.popen" data-clickcode-toggle-close="hom.pclose">
+								<div class="prd_left">
+									<div class="prd_text">
+										
+											
+											
+												
+												<strong>3개</strong> 채널, <strong class="as_em">+266만명</strong>이 함께해요!
+											
+											
+										
+									</div>
+								</div>
+								<div class="prd_right">
+									
+										<div class="prd_icons">
+											
+												<i class="prd_icon"><img src="https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_youtube.png" alt="youtube" onerror="showNoImage(this)"></i>
+											
+												<i class="prd_icon"><img src="https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_twitter.png" alt="twitter" onerror="showNoImage(this)"></i>
+											
+												<i class="prd_icon"><img src="https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_tv.png" alt="네이버 TV" onerror="showNoImage(this)"></i>
+											
+										</div>
+									
+									<div class="prd_buttons">
+										<i type="button" class="prd_button">더보기</i>
+									</div>
+								</div>
+							</a>
+							<div class="pp_rel_bundle _press_more_profile is_hidden">
+								
+									<ul class="pp_rel_list">
+										
+											
+											<li class="pp_rel_item _representative_channel_item">
+												<div class="pp_rel_inner" data-use-follow-layer="0">
+													<div class="pp_rel_title _channel_plugin_follow_count" data-channel-id="5fd1c6c7e983097c120d6b47" data-count-label="구독" data-count-template="pressHomeProfile">
+														<i class="pp_rel_icon"><img src="https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_tv.png" alt="네이버 TV" onerror="showNoImage(this)"></i>
+														<a href="https://tv.naver.com/sbsnews8" class="pp_rel_text" onclick="nclk(event,'hom.ptv', '', '');">
+															<span class="pp_rel_name">SBS뉴스</span>
+														</a>
+														
+														
+									<span class="pp_rel_count _count">
+										
+											
+											구독
+										
+										13.4만+
+									</span>
+														
+													</div>
+													
+														<button class="pp_rel_subscribe _channel_plugin_follow_btn" data-channel-id="5fd1c6c7e983097c120d6b47" data-toggle-class="is_on" data-clickcode-follow="hom.subs" data-clickcode-unfollow="hom.subs"><span class="blind">구독</span></button>
+													
+												</div>
+												
+											</li>
+										
+											
+											<li class="pp_rel_item _representative_channel_item">
+												<div class="pp_rel_inner" data-use-follow-layer="0">
+													<div class="pp_rel_title _channel_plugin_follow_count" data-channel-id="5fd1cc36cf83be21e743e1d2" data-count-label="팔로워" data-count-template="pressHomeProfile">
+														<i class="pp_rel_icon"><img src="https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_twitter.png" alt="twitter" onerror="showNoImage(this)"></i>
+														<a href="https://twitter.com/SBS8news" class="pp_rel_text" onclick="nclk(event,'hom.ptwitter', '', '');">
+															<span class="pp_rel_name">SBS8news</span>
+														</a>
+														
+														
+									<span class="pp_rel_count _count">
+										
+											
+											팔로워
+										
+										44.7만+
+									</span>
+														
+													</div>
+													
+												</div>
+												
+											</li>
+										
+											
+											<li class="pp_rel_item _representative_channel_item">
+												<div class="pp_rel_inner" data-use-follow-layer="0">
+													<div class="pp_rel_title _channel_plugin_follow_count" data-channel-id="5fd1cce3d993d64050f7d2b4" data-count-label="구독" data-count-template="pressHomeProfile">
+														<i class="pp_rel_icon"><img src="https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_youtube.png" alt="youtube" onerror="showNoImage(this)"></i>
+														<a href="https://www.youtube.com/channel/UCkinYTS9IHqOEwR1Sze2JTw" class="pp_rel_text" onclick="nclk(event,'hom.pyoutube', '', '');">
+															<span class="pp_rel_name">SBS 뉴스</span>
+														</a>
+														
+														
+									<span class="pp_rel_count _count">
+										
+											
+											구독
+										
+										208만+
+									</span>
+														
+													</div>
+													
+												</div>
+												
+											</li>
+										
+									</ul>
+								
+								
+								
+									<div class="pp_datalab _press_more_statistics"></div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</header>
+
+<script>
+	function initShare() {
+		new news.JsLoader().setConfig({
+			'sCharSet': 'utf-8' // default
+		}).load(
+				['https://ssl.pstatic.net/spi/js/release/ko_KR/splugin.m.js?'],
+				function() {
+					window.__splugin = SocialPlugIn_Core({
+						// nEvent Key
+						"evKey"  : "news",
+						"dimmed" : "fixed",
+						"darkMode"    : isDarkShareLayer(),
+						"serviceName" : "뉴스",
+						"sourceName" : "",
+						"onClick"     : function(button) {},
+						"onShow"      : function() {},
+						"onHide"      : function() {},
+						"onResize"    : function(event) {},
+						"onRotate"    : function(event) {}
+					});
+				}
+		);
+	}
+
+	function initPressList() {
+		var cpType = 'News';
+		var popupUrl = '/press/popup?cpType=' + cpType;
+		var pressListPopup = new PressHomeMainManager.PressListPopup('._press_list_btn', {
+			selectedOfficeId: '055',
+			pressListPopupUrl: popupUrl,
+			wrapper: "._press_list_wrapper"
+		});
+
+		return pressListPopup;
+	}
+
+	function initPressHomeLnb(params) {
+        var officeId = '055';
+        var isChannelFollowerVisible = true;
+		var welMillionBadgeArea = $('._follower_count_million_badge');
+		var welFollowerLabel = $('._follower_label');
+		var isMillionBadgeVisible = welMillionBadgeArea.length > 0;
+		var isLiveViewer = $('.NAVER_APP_LIVE_VIEWER').length > 0;
+		var path = location.pathname;
+		var isLiveUrl = path.indexOf('/press/' + officeId + '/live') >= 0;
+
+        /* 채널구독수 */
+        if (isChannelFollowerVisible || isMillionBadgeVisible) {
+			var channelFollowerCount = new PressHomeMainManager.ChannelFollowerCount('._channel_follower_count', {
+				officeId: officeId,
+			});
+			if (isChannelFollowerVisible) {
+				channelFollowerCount.oPromise.then($.proxy(channelFollowerCount.renderFollowerCount, channelFollowerCount));
+
+				var incrementFollowerCount = function () {
+					channelFollowerCount.incrementAndRenderFollowerCount();
+				};
+
+				var decrementFollowerCount = function () {
+					channelFollowerCount.decrementAndRenderFollowerCount();
+				}
+			}
+
+			if (isMillionBadgeVisible) {
+				channelFollowerCount.oPromise.then(function (followerCount) {
+					var nFollowerCount = followerCount || 0;
+					var nFollowerCountInMillion = Math.floor(nFollowerCount / 1000000);
+					var nFollowerCountInMan = nFollowerCountInMillion * 100;
+					if (nFollowerCountInMillion < 1) {
+						if (!isChannelFollowerVisible) {
+							$(".press_hd_subscribe").remove();
+						}
+						return;
+					} else {
+						var sMillionClassName = 'as_' + ((nFollowerCountInMillion % 10 === 0) ? 10 : nFollowerCountInMillion % 10) + 'million';
+
+						welFollowerLabel.show();
+						welMillionBadgeArea.addClass(sMillionClassName)
+						welMillionBadgeArea.append(' <i class="press_ico">구독자수</i><em>' + nFollowerCountInMan + '</em>만').show();
+					}
+				});
+			}
+        }
+        /* 채널구독수 */
+
+        /* 채널구독버튼 */
+        var channelSubscribeButton = new PressHomeMainManager.ChannelSubscribeButton('._press_hd_subscribe_btnwrap', {
+            officeId: officeId,
+            buttonClassName: 'press_hd_subscribe_btn',
+            noLoginLayerTemplate: function() {
+            	return news.Util.getTemplateRenderer(function () {/*!@preserve
+            				<div class="press_hd_subscribe_layer_wrap as_tooltip _afterAdd" style="display: none;">
+								<div class="press_hd_subscribe_layer">
+									<p class="press_hd_subscribe_layer_title">메인 뉴스판에서 SBS 주요뉴스를 볼 수 있습니다.</p>
+									<div class="press_hd_subscribe_layer_btns">
+										<a href="#" onclick="goMainChannelUrl();" class="press_hd_subscribe_layer_btn">보러가기</a>
+									</div>
+								</div>
+							</div>
+					*/
+					return true;
+				});
+			},
+			commonLayerTemplate: function() {
+            	return news.Util.getTemplateRenderer(function() {/*!@preserve
+            				<div class="press_hd_subscribe_layer_wrap as_tooltip _afterRemove" style="display: none;">
+								<div class="press_hd_subscribe_layer">
+									<p class="press_hd_subscribe_layer_title"><strong>SBS</strong> 언론사 구독 해지되었습니다.</p>
+								</div>
+							</div>
+            		*/
+					return true;
+            	});
+			},
+            nclk_add: 'hom.take',
+            nclk_remove: 'hom.cancel',
+            nclk_info: 'hom.info',
+            onAddChannelSuccess: incrementFollowerCount,
+            onRemoveChannelSuccess: decrementFollowerCount,
+			needNotificationButton: true,
+			needNotificationConfirm: true
+        });
+        /* 채널구독버튼 */
+
+        /* 공유하기 */
+		if (!isLiveViewer && !isLiveUrl) {
+			initShare();
+		}
+        /* 공유하기 */
+
+        /* 뒤로버튼 */
+        var historyBackButton = new PressHomeMainManager.HistoryBackButton('._press_header ._back_btn');
+        /* 뒤로버튼 */
+
+        /* 언론사리스트 */
+		if (!isLiveViewer && !isLiveUrl) {
+			var pressListPopup = initPressList();
+		}
+        /* 언론사리스트 */
+
+		return {
+            channelFollowerCount: channelFollowerCount,
+            historyBackButton: historyBackButton,
+            channelSubscribeButton: channelSubscribeButton,
+            pressListPopup: pressListPopup
+        }
+	}
+</script>
+
+<script>
+	var profileData = {"notice":null,"relatedChannelContainer":{"totalSubscriberCount":2662085,"channelGroupList":[{"type":"NAVER_TV","channels":[{"type":"NAVER_TV","name":"SBS뉴스","subscriberCount":"13.4만","url":"https://tv.naver.com/sbsnews8","channelPluginId":"5fd1c6c7e983097c120d6b47","clickCode":"ptv","countLabel":"구독","logoImgUrl":"https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_tv.png","alternativeName":"네이버 TV","channelPluginFollowAvailable":true,"displayName":"SBS뉴스"}],"subscriberCount":"13.4만","channelsCount":1,"representativeChannel":{"type":"NAVER_TV","name":"SBS뉴스","subscriberCount":"13.4만","url":"https://tv.naver.com/sbsnews8","channelPluginId":"5fd1c6c7e983097c120d6b47","clickCode":"ptv","countLabel":"구독","logoImgUrl":"https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_tv.png","alternativeName":"네이버 TV","channelPluginFollowAvailable":true,"displayName":"SBS뉴스"}},{"type":"TWITTER","channels":[{"type":"TWITTER","name":"SBS8news","subscriberCount":"44.7만","url":"https://twitter.com/SBS8news","channelPluginId":"5fd1cc36cf83be21e743e1d2","clickCode":"ptwitter","countLabel":"팔로워","logoImgUrl":"https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_twitter.png","alternativeName":"twitter","channelPluginFollowAvailable":false,"displayName":"SBS8news"}],"subscriberCount":"44.7만","channelsCount":1,"representativeChannel":{"type":"TWITTER","name":"SBS8news","subscriberCount":"44.7만","url":"https://twitter.com/SBS8news","channelPluginId":"5fd1cc36cf83be21e743e1d2","clickCode":"ptwitter","countLabel":"팔로워","logoImgUrl":"https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_twitter.png","alternativeName":"twitter","channelPluginFollowAvailable":false,"displayName":"SBS8news"}},{"type":"YOUTUBE","channels":[{"type":"YOUTUBE","name":"SBS 뉴스","subscriberCount":"208만","url":"https://www.youtube.com/channel/UCkinYTS9IHqOEwR1Sze2JTw","channelPluginId":"5fd1cce3d993d64050f7d2b4","clickCode":"pyoutube","countLabel":"구독","logoImgUrl":"https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_youtube.png","alternativeName":"youtube","channelPluginFollowAvailable":false,"displayName":"SBS 뉴스"}],"subscriberCount":"208만","channelsCount":1,"representativeChannel":{"type":"YOUTUBE","name":"SBS 뉴스","subscriberCount":"208만","url":"https://www.youtube.com/channel/UCkinYTS9IHqOEwR1Sze2JTw","channelPluginId":"5fd1cce3d993d64050f7d2b4","clickCode":"pyoutube","countLabel":"구독","logoImgUrl":"https://ssl.pstatic.net/static.news/image/news/m/2020/07/24/channel_youtube.png","alternativeName":"youtube","channelPluginFollowAvailable":false,"displayName":"SBS 뉴스"}}]},"talkTalkUrl":null,"statistics":{"period":"2022.01.10.~2022.01.16.","ageStatList":[{"age":"10","percent":0.9927590375984803,"rank":6,"ageParsedByInt":10},{"age":"20","percent":20.62986107663356,"rank":5,"ageParsedByInt":20},{"age":"30","percent":58.43659665756341,"rank":3,"ageParsedByInt":30},{"age":"40","percent":100.0,"rank":1,"ageParsedByInt":40},{"age":"50","percent":73.32973137430578,"rank":2,"ageParsedByInt":50},{"age":"60","percent":33.88197247186911,"rank":4,"ageParsedByInt":60}],"genderStatMap":{"female":47.81991092057554,"male":52.180089079424455},"hasSameTopRank":false},"awards":[],"relatedChannelEmpty":false};
+	var billboardChartLibUrl = 'https://ssl.pstatic.net/static.news/mnews/resources/20220120_122848/js/generated/billboard.pkgd.min.js';
+
+    function initPressHomeTopLnb(params) {
+        var pressHomeLnb = initPressHomeLnb();
+
+        var officeId = '055';
+        var welOffceHomeTabList = $('._office_home_tab_list');
+        var pressHeader = $('._press_header');
+        var isTabPresent = welOffceHomeTabList.length > 0;
+
+        /* 플로팅 */
+        var _floatingConfig = {
+            sFixedContentSelector: '._fixed',
+            onInitialize: function() {
+                new PressHomeMainManager.ChannelSubscribeButton('._press_float_subscribe', {
+                    officeId: officeId,
+                    buttonClassName: 'press_float_subscribe_btn',
+					noLoginLayerTemplate: function() {
+            			return news.Util.getTemplateRenderer(function () {/*!@preserve
+								<a href="javascript:;" onclick="goMainChannelUrl();" class="press_float_subscribe_layer _afterAdd" style="display: none;">
+									<span class="press_float_subscribe_layer_text">메인 뉴스판에서 SBS 주요뉴스를 볼 수 있습니다.</span>
+									<span class="press_float_subscribe_layer_link">보러가기</span>
+								</a>
+								*/
+							return true;
+						});
+					},
+					commonLayerTemplate: function() {
+		            	return news.Util.getTemplateRenderer(function() {/*!@preserve
+								<a href="javascript:;" onclick="return false;" class="press_float_subscribe_layer _afterRemove" style="display: none;">
+									<span class="press_float_subscribe_layer_text"><strong>SBS</strong> 언론사 구독 해지되었습니다.</span>
+								</a>
+		            			*/
+							return true;
+						});
+					},
+                    nclk_add: 'prs_hom.take',
+                    nclk_remove: 'prs_hom.cancel',
+                    nclk_info: 'prs_hom.info',
+                    onAddChannelSuccess: pressHomeLnb.channelSubscribeButton.onAddChannelSuccess,
+                    onRemoveChannelSuccess: pressHomeLnb.channelSubscribeButton.onRemoveChannelSuccess
+                });
+            },
+			onStartFloating: function() {
+				pressHeader.addClass('is_invisible');
+			},
+			onStopFloating: function() {
+				pressHeader.removeClass('is_invisible');
+			}
+        };
+        if (isTabPresent) {
+            _floatingConfig.fnBoundary = function(){
+            	return $("._start_floating").offset().top - $("._press_float").height();
+            }
+        } else {
+            _floatingConfig.sAfterContentSelector = '._press_header';
+        }
+        var floating = new PressHomeMainManager.Floating('._press_float', _floatingConfig);
+        /* 플로팅 */
+
+        /* 뒤로버튼 */
+        var historyBackButton = new PressHomeMainManager.HistoryBackButton('._press_float ._back_btn');
+        /* 뒤로버튼 */
+
+        return {
+            floating: floating,
+            pressHomeLnb: pressHomeLnb,
+            historyBackButton: historyBackButton
+        }
+    }
+</script>
+
+
+
+
+
+
+<div class="press_float _press_float is_fixed" style="background-color: #0B3F62; display:none;">
+	<div class="press_float_inner">
+		<a href="javascript:;" class="press_float_prev _back_btn">이전</a>
+		<a href="https://m.naver.com" class="press_float_logo"><span class="blind">NAVER</span></a>
+		<a href="https://news.naver.com/main" class="press_float_service ">
+			<span class="blind">뉴스</span>
+		</a>
+		<div class="press_float_head">
+			<strong class="press_float_title">
+				<a href="/press/055" class="press_float_title_text" onclick="nclk(event,'prs_hom.top',055,'');">SBS</a>
+			</strong>
+		</div>
+
+		<div class="press_float_subscribe _press_float_subscribe">
+		</div>
+
+	</div>
+</div>
+<div id="ct" role="main" class="press _start_floating" style="min-height:3000px;">
+	
+		
+			
+
+
+
+
+
+
+
+
+
+<div class="press_section_tab _press_tab_scroll _fixed is_fixed" style="display:none; background-color: #0B3F62;">
+	<div class="press_section_tab_inner">
+		<ul class="press_section_tab_list _office_home_tab_list">
+			
+				
+				
+					
+						
+						
+						
+					
+				
+				<li class="press_section_tab_item " aria-selected="false">
+					<a href="/press/055" class="_press_tab_btn" data-tab-type="Default" data-tab-id="Main">
+						<span class="press_section_tab_txt">주요뉴스</span>
+					</a>
+				</li>
+			
+				
+				
+				<li class="press_section_tab_item is_new" aria-selected="false">
+					<a href="/press/055/live" class="_press_tab_btn" data-tab-type="Link" data-tab-id="NaverTvLive">
+						<span class="press_section_tab_txt">생중계</span>
+					</a>
+				</li>
+			
+				
+				
+				<li class="press_section_tab_item " aria-selected="false">
+					<a href="/press/055?sid=154" class="_press_tab_btn" data-tab-type="Section" data-tab-id="Election">
+						<span class="press_section_tab_txt">대선</span>
+					</a>
+				</li>
+			
+				
+				
+				<li class="press_section_tab_item " aria-selected="false">
+					<a href="/press/055?sid=100" class="_press_tab_btn" data-tab-type="Section" data-tab-id="Politics">
+						<span class="press_section_tab_txt">정치</span>
+					</a>
+				</li>
+			
+				
+				
+				<li class="press_section_tab_item " aria-selected="false">
+					<a href="/press/055?sid=101" class="_press_tab_btn" data-tab-type="Section" data-tab-id="Economy">
+						<span class="press_section_tab_txt">경제</span>
+					</a>
+				</li>
+			
+				
+				
+				<li class="press_section_tab_item " aria-selected="false">
+					<a href="/press/055?sid=102" class="_press_tab_btn" data-tab-type="Section" data-tab-id="Society">
+						<span class="press_section_tab_txt">사회</span>
+					</a>
+				</li>
+			
+				
+				
+				<li class="press_section_tab_item " aria-selected="false">
+					<a href="/press/055?sid=103" class="_press_tab_btn" data-tab-type="Section" data-tab-id="LifeCulture">
+						<span class="press_section_tab_txt">생활</span>
+					</a>
+				</li>
+			
+				
+				
+				<li class="press_section_tab_item " aria-selected="false">
+					<a href="/press/055?sid=104" class="_press_tab_btn" data-tab-type="Section" data-tab-id="World">
+						<span class="press_section_tab_txt">세계</span>
+					</a>
+				</li>
+			
+				
+				
+				<li class="press_section_tab_item " aria-selected="false">
+					<a href="/tv/055" class="_press_tab_btn" data-tab-type="Link" data-tab-id="Broadcast">
+						<span class="press_section_tab_txt">저녁방송</span>
+					</a>
+				</li>
+			
+				
+				
+					
+						
+						
+							
+						
+						
+					
+				
+				<li class="press_section_tab_item " aria-selected="true">
+					<a href="/press/055/ranking" class="_press_tab_btn" data-tab-type="Default" data-tab-id="Ranking">
+						<span class="press_section_tab_txt">랭킹</span>
+					</a>
+				</li>
+			
+		</ul>
+	</div>
+</div>
+
+<script>
+    // NEW-23795
+    function addTabClassIfNecessary() {
+        var welTabScroll = $('._press_tab_scroll');
+        if (welTabScroll.length > 0) {
+            var welTabs = $('._office_home_tab_list').children();
+            var welSelectedTab = $('.press_section_tab_item[aria-selected=true]')
+
+            var nIndex = welTabs.index(welSelectedTab);
+            welTabScroll.removeClass('is_first').removeClass('is_last');
+            if (nIndex == 0) {
+                welTabScroll.addClass('is_first');
+            } else if (nIndex == welTabs.length - 1) {
+                welTabScroll.addClass('is_last');
+            }
+        }
+    }
+
+    function initPressHomeTab(params) {
+        var officeId = '055';
+
+        /* 탭 */
+        var welTabScroll = $('._press_tab_scroll');
+        if (welTabScroll.length > 0) {
+            // position 0 부터 시작한다. ("style 속성 자체를 지우면 스크롤이 적용되지 않는다" on iOS)
+            welTabScroll.children().eq(0).css('left', '0px');
+            var pressTabScroll = new news.Scroll("._press_tab_scroll");
+            // ._press_tab_scroll이 floating 상태에 따라 height값이 달라져 고정하지 않도록 설정
+            $("._press_tab_scroll").css("height", ""); 
+            var welSelectedTab = $('.press_section_tab_item[aria-selected=true]');
+            if (welSelectedTab.length > 0) {
+                pressTabScroll.scrollElToCenter(welSelectedTab);
+            }
+        }
+        /* 탭 */
+        addTabClassIfNecessary();
+
+        /* 섹션탭 클릭 */
+        var pressTabButton = new PressHomeMainManager.ButtonListener('._press_tab_btn', {
+            onClick: function (e) {
+                var tabType = $(e.currentTarget).data('tab-type');
+				var tabId = $(e.currentTarget).data('tab-id');
+                if (!(tabType === 'home' || tabType === 'link')) {
+					if (params && params.floating && params.floating.isFloating) {
+						e.currentTarget.hash = 'lnb';
+					}
+				}
+                if (tabId === 'Main') {
+                    nclk(e, 'hom.mm', officeId, '');
+                } else if (tabId === 'NaverTvLive') {
+                    nclk(e, 'hom.live', officeId, '');
+                } else if (tabId === 'Ranking') {
+                	nclk(e, 'hom.rank',officeId,'');
+				} else if (tabId === 'Premium') {
+                    nclk(e, 'hom.premium', officeId, '');
+				} else {
+					nclk(e, 'hom.section', officeId, '');
+				}
+            }
+        });
+        /* 섹션탭 클릭 */
+
+        return {
+            pressTabScroll: pressTabScroll,
+            pressTabButton: pressTabButton
+		}
+    }
+</script>
+
+<script>
+    /**
+     * `focus to lnb` 대응 (url format: `some/url#lnb`)
+     */
+    ;(function(){
+        var isFocusToLnbMode = false;
+
+        // default 마크업 구성을 `focus to lnb` 로 하고 (floating lnb 로 구성),
+        // `focus to lnb` 접근이 아닐 경우 `floating lnb` 구성을 해제하는 컨셉. (to static 으로)
+        //
+        // default 마크업 구성을 `floating lnb` 로 한 이유:
+        // 1. `static lnb` 방식으로 하면,
+        // 2. `focus` 처리할 때 "화면 덜컹 거림이 보여서" 보기 좋지 않다.
+        //
+        // `focus` 요청일 경우,
+        // 필요한 추가 처리는 content 출력 후 처리돼있다. (e.g. scroll 이동)
+        if(location.hash === '#lnb'){
+            isFocusToLnbMode = true;
+        }
+
+        // "뒤로가기", "새로고침" 일 경우 focus 처리하지 않는다. (browser 에서 scroll 자동 이동 시키므로)
+        (function () {
+            var winNavigation = (window.performance && window.performance.navigation) || {};
+            var isReload = winNavigation.type === winNavigation.TYPE_RELOAD;
+            var isHistoryBack = winNavigation.type === winNavigation.TYPE_BACK_FORWARD;
+            // 상수를 지원하지 않을 경우도 focus 처리하지 않음
+            if(isHistoryBack || isReload || !winNavigation.TYPE_BACK_FORWARD){
+                isFocusToLnbMode = false;
+            }
+        })();
+
+        try{
+            // 서버 기본 설정이 `lnb floating + block' 이면 LNB 움직이는게 보여서 script 에서 block 되도록 했다.
+            document.querySelector('._press_float').style.display = '';
+            document.querySelector('._press_tab_scroll').style.display = '';
+        }catch(e){}
+
+        // 선택된 LNB 중앙 정렬 선처리 (onload 후 Scroll-UI 에서 중앙 정렬시 이동이 보이지 않게)
+        (function(){
+            try{
+                var lnb = document.querySelector('._press_tab_scroll');
+                var lnbScrollContent = lnb.firstElementChild;
+                var selectedItem = lnb.querySelector('li[aria-selected="true"]');
+                var maxScrollLeft = 0;
+                var selectedItemScrollLeft = 0;
+
+                // Scroll-UI 적용 전에 inline style 은 제거해 줘야 한다. (e.g. onload 후 적용 될 때)
+                lnbScrollContent.style.position = 'absolute';
+                maxScrollLeft = lnbScrollContent.clientWidth - lnb.clientWidth;
+                if(maxScrollLeft <= 0){ // lnb 가 content 보다 크다. (scroll 필요 없는 경우)
+                    return;
+                }
+                selectedItemScrollLeft = Math.max(
+                    0,
+                    (selectedItem.offsetLeft || 0) -
+                    ((lnb.clientWidth - selectedItem.clientWidth) / 2)
+                );
+                selectedItemScrollLeft = Math.min(maxScrollLeft, selectedItemScrollLeft);
+                lnbScrollContent.style.left = -1 * Math.round(selectedItemScrollLeft) + 'px';
+            }catch(e){}
+        })();
+
+        // 1. focus mode 라면 서버 출력 마크업을 그대로 두고
+        // 2. 이후 처리는 content 출력 후 js 에서 하는 구조다.
+        if(isFocusToLnbMode){
+            return;
+        }
+
+        /**
+         * `focus to lnb` 접근이 아니라면 `static lnb` 구성으로 마크업 변경
+         */
+        try{
+            var header = document.querySelector('._press_header');
+            var headerFloat = document.querySelector('._press_float');
+            var lnb = document.querySelector('._press_tab_scroll');
+
+            header.style.display = '';
+            headerFloat.className = headerFloat.className.replace('is_fixed', '');
+            if(lnb){
+                lnb.className = lnb.className.replace('is_fixed', '');
+            }
+        }catch(e){}
+    })();
+</script>
+
+		
+		
+	
+	<script>
+		/**
+		 * `focus to lnb` 대응 (content 출력 후 추가 처리)
+		 */
+		;(function () {
+			try {
+				var startFloating = document.querySelector('._start_floating');
+				var header = document.querySelector('._press_header');
+				var lnbScrollPaddingTop = document.querySelector('._press_float').clientHeight;
+
+				// js 처리 관련 inline style 제거
+				window.addEventListener('load', function () {
+					document.querySelector('#ct').style.minHeight = '';
+				});
+
+				// display none 상태가 아니면 `focus to lnb` 접근이 아니다.
+				if (header.style.display !== 'none') {
+					return;
+				}
+				header.style.display = ''; // show header
+				
+				var floatingOffset = startFloating.getBoundingClientRect().top + window.pageYOffset;
+				window.scrollTo(0, floatingOffset - lnbScrollPaddingTop);
+			}catch(e){}
+		})();
+	</script>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div class="press_ranking_home">
+        
+        <ul class="press_ranking_tab">
+            <li class="is_selected">
+                <a href="/press/055/ranking?type=popular&date=20220121" class="link_tab_item" onclick="nclk(event, 'rnk.rnk','','')"><span>많이 본</span></a>
+            </li>
+            <li class="">
+                <a href="/press/055/ranking?type=comment&date=20220121" class="link_tab_item" onclick="nclk(event, 'rnk.cmt','','')"><span>댓글 많은</span></a>
+            </li>
+            
+                <li class="">
+                    <a href="/press/055/ranking?type=section&date=20220121" class="link_tab_item" onclick="nclk(event, 'rnk.bys','','')"><span>섹션별</span></a>
+                </li>
+            
+        </ul>
+    
+    
+        <div class="press_ranking_desc"> <p><em>오후 1시 ~ 2시</em>까지 집계한 결과입니다. 총 누적수와 다를 수 있습니다.</p></div>
+    
+    
+    
+        
+
+            
+                <div class="press_ranking_box" style="display: none;">  
+                    <ul class="press_ranking_list">
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948269?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">1</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">"저 보고 악당이 되란 말입니까?" 어느 납세자의 하소연</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    41,237
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948269.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948251?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">2</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">14조 추경, 소상공인 320만 명에 300만 원…지급 언제?</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    13,967
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948251.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948301?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">3</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">"모든 게 날아갔다"…주택가 대형 화재로 10명 사상 [월드리포트]</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    11,690
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948301.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948293?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">4</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">성동구 초고층 주상복합 '진동 신고'…국토부, 긴급 점검</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    8,309
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948293.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948282?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">5</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">이재명, 대선 후보 긴급 회동 제안…"'35조 추경 논의"</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    7,177
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948282.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948299?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">6</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">20여 차례 신체 불법 촬영했지만 '무죄'…대법원은 왜?</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    6,796
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948299.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948283?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">7</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">엄마 있는데 전 여친 살해한 조현진, 검찰 송치 전 한 말</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    6,546
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948283.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948295?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">8</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">오미크론 우세 지역 새 검사 체계…먹는 치료제 투약 확대</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    3,273
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948295.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948288?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">9</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">쓰나미 휩쓸린 통가 남성, 바다서 27시간 만에 생환</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    1,649
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948288.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948263?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">10</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">김종인 "김건희 언행 '대통령 부인 적합하겠나' 여론 만들어"</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    955
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948263.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                                </ul>
+                                </div>
+                                <div class="press_ranking_box" style="display: none">
+                                <ul class="press_ranking_list">
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948216?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">11</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">"실종자 가족분이 와 죄송하다고…" "똑같은 피해자인데"</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    712
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948216.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948225?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">12</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">사귀는 여경 누구 만났나, '경찰증' 보이며 CCTV 뒤졌다</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    685
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948225.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948302?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">13</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">[날씨] 한풀 꺾이는 추위…서쪽 중심 미세먼지 '주의'</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    624
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948302.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948249?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">14</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">홍준표 "캠프 참여 무산 유감…윤핵관, 날 구태 정치인으로 몰아"</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    620
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948249.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948285?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">15</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">조원태는 왜 김만배에 30억 빌렸나…"대장동과 무관-상속세 급전 필요"</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    605
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948285.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948230?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">16</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">코로나 먹는 치료제 대상, 65세→60세 이상으로 넓힌다</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    559
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948230.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948198?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">17</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">확진 7천 명 넘을 듯…오미크론 대응 전환 말 바꾼 정부</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    520
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948198.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948286?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">18</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">남극 '괴물 빙하' 소멸…수영장 6천만 개 분량 담수 콸콸</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    488
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948286.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948207?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">19</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">포스코 사망사고, 입사 보름밖에 안 된 하청 직원이었다</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    484
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948207.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                            
+                            
+                            <li class="as_thumb">
+                                <a href="https://n.news.naver.com/article/055/0000948289?ntype=RANKING" class="_es_pc_link" data-pc-link="" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">20</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">[취재파일] 국민의 알 권리와 좋은 저널리즘</strong>
+                                        
+                                            
+                                                
+                                                    <span class="list_view">
+                                                    <span class="blind">조회수</span>
+                                                    470
+                                                
+                                            
+                                            
+                                        
+                                    </span>
+                                    </div>
+                                    
+                                        <div class="list_img">
+                                            <img src="https://mimgnews.pstatic.net/image/origin/055/2022/01/21/948289.jpg?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            
+                                        </div>
+                                    
+                                </a>
+                            </li>
+                        
+                        
+                    </ul>
+                </div>
+            
+            
+        
+        
+    
+    
+    <div class="press_ranking_date" data-init-date="20220121">
+        <button type="button" class="button_date_prev" onclick="nclk(event, 'rnk.dateprv','','')"><span class="blind">이전 날짜</span></button>
+        <strong></strong>
+        <button type="button" class="button_date_next" onclick="nclk(event, 'rnk.datenxt','','')"><span class="blind">다음 날짜</span></button>
+    </div>
+
+    <div class="link_press_ranking_info_wrap">
+        <a href="https://m.news.naver.com/ombudsman/index?mode=rule&open=ranking"
+           data-pc-url="https://news.naver.com/main/ombudsman/rankingHelp.naver?mid=omb"
+           class="link_press_ranking_info" onclick="nclk(event, 'rnk.policy','','')">
+            랭킹 뉴스 집계 기준
+        </a>
+    </div>
+    
+</div>
+
+    </section>
+
+<section class="press_aside">
+    <h3 class="blind">구독</h3>
+    <div class="_aside"></div> 
+<script>
+doAfterLoadEnd(loadAside);
+
+function loadAside() {
+    var forcePcVersion = "";
+
+    if (isMobileDevice() && !forcePcVersion) {
+        return;
+    }
+    var iframe = append(); 
+    
+    window.addEventListener('message', function(event) {
+        var data = event.data;
+
+        if (event.origin !== "https://news.naver.com") {  
+            return;
+        }
+
+        if (data.type === "setIframeSize" && data.height) {
+            iframe.style.height = data.height + 'px';
+            iframe.style.visibility = ""; 
+        }
+    });
+    
+    
+    function append() {
+        var iframe = document.createElement('iframe');
+
+        iframe.width = "100%";
+        iframe.height = "0"; 
+        iframe.style.visibility = "hidden"; 
+        iframe.setAttribute("frameborder", "no");
+        iframe.setAttribute("scrolling", "no");
+        iframe.src = "https://news.naver.com/aside?oid=055";
+
+        document.querySelector("._aside").appendChild(iframe);
+
+        return iframe;
+    }
+}
+</script>
+</section>
+</div>
+</div>
+
+
+
+    
+
+
+
+
+<hr /> 
+
+
+
+
+
+
+<div class="mp_footer">
+
+    <div class="f_maininfo">
+        <div class="f_maininfoinner">
+            <a href="javascript:;" class="r_pg_top _go_top" id="goTop" onclick="nclk(event, 'fot.pctop', '', '');">맨위로</a>
+
+            <footer role="contentinfo">
+                <p id="u_ftlkw" class="u_ftlkw _footer_login">
+                    <a href="https://m.naver.com/services.html"  data-mpurl='{"m":"https://m.naver.com/services.html","p":"https://www.naver.com/more.html"}' class="u_ftlk" onclick="nclk(event,'fot.serviceall','','');">전체서비스</a>
+                </p>
+                <p class="u_cr">
+                    <span class="u_ftm">
+            
+                
+                    <span class="u_cri u_cri_v1"><a href="https://m.news.naver.com/ombudsman/index" data-mpurl='{"m":"https://m.news.naver.com/ombudsman/index","p":"https://news.naver.com/main/ombudsman/index.naver"}' class="u_cra" onclick="nclk(event,'fot.guide','','');">서비스안내</a></span>
+                    <span class="u_cri u_cri_v1"><a href="https://m.help.naver.com/support/service/main.help?serviceNo=5603" data-mpurl='{"m":"https://m.help.naver.com/support/service/main.help?serviceNo=5603","p":"https://help.naver.com/support/service/main.help?serviceNo=997&_news_news_1"}' class="u_cra" onclick="nclk(event,'fot.help','','');">뉴스도움말</a></span>
+                    <span class="u_cri u_cri_v1"><a href="https://m.help.naver.com/support/inquiry/input.help?categoryNo=5480&serviceNo=5603&lang=ko" data-mpurl='{"m":"https://m.help.naver.com/support/inquiry/input.help?categoryNo=5480&serviceNo=5603&lang=ko","p":"https://help.naver.com/support/contents/contents.help?serviceNo=997&categoryNo=8158"}' class="u_cra" onclick="nclk(event,'fot.report','','');">오류신고</a></span>
+                
+                
+            
+					</span>
+            
+                
+                    <span class="u_copyright">본 콘텐츠의 저작권은 제공처 또는 네이버에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적책임을 질 수 있습니다.</span>
+                    <span class="u_cri"><span class="copymark">ⓒ</span><a href="https://www.navercorp.com/" class="u_cra_v1" id="nhnLink" onclick="nclk(event,'fot.navercorp','','');">NAVER Corp.</a></span>
+                    
+                        
+                    
+                    
+                        <span class="u_cri"><span class="copymark">ⓒ</span> <a class="u_cra_v1" id="copyRightByOffice">SBS</a></span>
+                    
+                
+                
+            
+                </p>
+            </footer>
+        </div>
+    </div>
+</div>
+
+
+    
+	
+	
+		
+		
+	
+	
+	
+    
+    <script type="text/javascript">
+/**
+ * 이 파일은 모바일 뉴스 서비스 전체 페이지에 적용되는 스크립트로써,
+ * 코드 추가 시 Front-End 성능 관점에서 주의를 요합니다.
+ */
+jQuery(window).on('load', function(){
+    setTimeout(onload, 10);
+
+    function onload(){
+        var oLnb = new news.Lnb('._lnb_scroll');
+        new news.ImageLazyLoader().load("img[data-src]");
+        new news.MoveTopButton("._go_top");
+
+        
+        new news.HistoryManager().init("naver_mobile_news_history", "https://m.naver.com/");
+
+        // iframe lazy-loading
+        (function(){
+            try {
+                Array.prototype.slice.apply(document.querySelectorAll('iframe[data-src]'))
+                    .forEach(function(iframeEl) {
+                        var originSrc = iframeEl.getAttribute('data-src');
+                        if(originSrc) {
+                            iframeEl.setAttribute('src', originSrc);
+                        }
+                    });
+            }catch(e) {}
+        })();
+
+        if(typeof init === "function"){
+            init();
+        }
+
+        var cookie = news.Cookie.getInstance();
+        var isShownNewLnb = cookie.getItem("isShownNewLnb");
+        if(isShownNewLnb == null) {
+            isShownNewLnb = "Y";
+            cookie.setItem("isShownNewLnb", isShownNewLnb, 3650, "", "/");
+            $("._isNew").addClass("is_new");
+        }
+
+        {
+            var footerLogin = jQuery(document).find('._footer_login');
+            if(footerLogin <= 0) {
+                return;
+            }
+
+            // 디바이스에 따라 로그인, 로그아웃 URL 분기
+            var loginUrl = "https://nid.naver.com/nidlogin.login";
+            var logoutUrl = "https://nid.naver.com/nidlogin.logout?";
+            if (news.Util.getAgentInfo().bMobileOrTablet) {
+                loginUrl = "https://nid.naver.com/nidlogin.login?svctype=262144";
+                logoutUrl = "https://nid.naver.com/nidlogin.logout?svctype=262144&";
+            }
+
+            if(news.LoginAssistor.isLoginUser()) {
+                footerLogin.prepend('<a href="javascript:news.Util.logout(\''+logoutUrl+'url=\'+encodeURIComponent(location.href));" class="u_ftlk" id="news_logout" onclick="nclk(event,\'fot.logout\',\'\',\'\');" >로그아웃</a>')
+            }else {
+                footerLogin.prepend('<a href="'+loginUrl+'" class="u_ftlk" id="news_login" onclick="nclk(event,\'fot.login\',\'\',\'\');" >로그인</a>')
+            }
+        }
+    }
+});
+</script>
+
+
+
+    
+    
+    	
+
+
+    
+        <script id="popularRankingArticleTemplate" type="text/x-handlebars-template">
+            {{#unless isEmptyArticleList}}
+                <div class="press_ranking_box">
+                    <ul class="press_ranking_list">
+                        {{#popularArticleList}}
+                            {{#is 10 @index}}
+                                </ul>
+                                </div>
+                                <div class="press_ranking_box">
+                                <ul class="press_ranking_list">
+                            {{/is}}
+                            {{#if thumbnail}}
+                            <li class="as_thumb">
+                            {{else}}
+                            <li class="as_no_thumb">
+                            {{/if}}
+                                <a href="{{linkUrl}}" data-pc-link="{{pcLinkUrl}}" class="_es_pc_link" onclick="nclk(event, 'rnk.rnknws','','')">
+                                    <em class="list_ranking_num">{{rank}}</em>
+                                    <div class="list_content">
+                                        <strong class="list_title">{{title}}</strong>
+                                        {{#if ../showRankingViews}}
+                                            <span class="list_view">
+                                            <span class="blind">조회수</span>
+                                                {{hitCountString}}
+                                           </span>
+                                        {{/if}}
+                                    </div>
+                                    {{#if thumbnail}}
+                                        <div class="list_img">
+                                            <img src="{{thumbnail}}?type=nf148_148" width="100%" height="100%" onerror="showNoImage(this)">
+                                            {{#is type '2'}}
+                                                <span class="r_ico r_vod"><em class="blind">동영상 뉴스</em></span>
+                                            {{/is}}
+                                        </div>
+                                    {{/if}}
+                                </a>
+                            </li>
+                        {{/popularArticleList}}
+                        {{#if showRankingNewsError}}
+                            <li class="rankingnews_error as_no_thumb">
+                                <p class="rankingnews_error_p">집계기준에 해당하는 기사가 더 없습니다.</p>
+                            </li>
+                        {{/if}}
+                    </ul>
+                </div>
+            {{/unless}}
+            {{#if isEmptyArticleList}}
+                <div class="press_ranking_empty_alert_wrap">
+                    <p class="press_ranking_empty_alert">해당일에 집계된<br>기사가 없습니다.</p>
+                </div>
+            {{/if}}
+        </script>
+    
+    
+    
+
+
+<!-- 랭킹탭 하단 날짜네비 스크립트 -->
+<script>
+    /* LNB */
+    var pressHomeTopLnb = initPressHomeTopLnb();
+    /* LNB */
+
+    /* 탭 */
+    var pressHomeTab = initPressHomeTab({
+        floating: pressHomeTopLnb.floating
+    });
+    /* 탭 */
+
+    /* 프로필 영역 */
+    new news.PressHomeProfile()
+        .init({
+            billboardChartLibUrl: billboardChartLibUrl,
+            templateData: profileData
+        })
+        .on('toggleProfile', function(){
+            pressHomeTopLnb.floating.updateBoundary();
+        });
+    /* 프로필 영역 */
+
+    /* 채널플러그인 */
+    new news.ChannelPlugin()
+        .init({
+            channelPluginApiDomain: "https://api.channel-plugin.naver.com",
+            followLayerAutoCloseMs: 5000,
+            nclickPrefix: 'prs_hom'
+        });
+    /* 채널플러그인 */
+
+    var PressHomeRankingPage = new PressHomeRankingManager('popular', '055', {
+        'startServiceDate': '20201116'
+    });
+
+    changeLinkUrlForPc();
+    
+    function changeLinkUrlForPc() {
+        $('a[data-pc-url]').each(function(index, aLink) {
+            if (isMobileDevice() === false) { // PC
+                aLink.href = aLink.getAttribute("data-pc-url");
+            }
+            aLink.removeAttribute("data-pc-url");
+        });
+    }
+</script>
+<!-- 랭킹탭 하단 날짜네비 스크립트 -->
+
+
+    
+
+	<script>
+    var gnb_service = 'news';
+    var gnb_logout = encodeURIComponent(location.href);
+    var gnb_template = 'gnb_utf8';
+    var gnb_brightness = 1;
+
+    doAfterLoadEnd(function () {
+        try {
+            GlobalMPUrlManager.init();
+        } catch (e) {}
+    });
+
+    doAfterLoadEnd(function() {
+        if (!document.querySelector('#gnb') || isMobileDevice() === true) { 
+            return;
+        }
+        
+        var gnb_src = "https://ssl.pstatic.net/static.gn/templates/gnb_utf8?2022012114";
+
+        // GnbHelper를 이용하여 GNB Layer를 닫을 수 있도록 지원한다.
+        if (window.jindo) {
+            jindo.LazyLoading.load(
+                gnb_src,
+                function() {
+                    try {
+                        getGNB();
+                    } catch(e) {}
+                },
+                'utf-8'
+            );
+
+            jindo.$Fn(function (oEvent) {
+                
+                GnbHelper.attachClick(oEvent.$value().target);
+            }).attach(document, 'click');
+        } else if (window.jQuery) {
+            new news.JsLoader().
+                load(
+                    [gnb_src],
+                    function() {
+                        try {
+                            getGNB();
+                        } catch(e) {}
+                    }
+                );
+
+            $(document).on("click", function(event) {
+                GnbHelper.attachClick(event.target);
+            });
+        }
+    });
+</script>
+
+<script>
+doAfterLoadEnd(function() {
+    try {
+        new SearchAutoComplete({
+            content: document.querySelector("._search_content"),
+            contentToggleBtn: document.querySelector("._search_content_toggle_btn"),
+            sTotalSearchBaseUrl: isMobileDevice()? 
+                'https://m.search.naver.com/search.naver?ie=utf8&sm=mns_hty':
+                'https://search.naver.com/search.naver?ie=utf8&sm=nws_hty'
+        });
+    } catch(e) {}
+});
+</script>
+	<!-- LCS -->
+	
+
+
+
+<script type="text/javascript">
+
+function initMa(){
+    var data = {
+        "service": "news",
+        "baseInfo": {
+            "category": (function(){
+                
+                var result = "언론사홈";
+
+                if(result !== ""){
+                    return result;
+                }
+                try{
+                    
+                    return document.querySelector('meta[property="og:title"]')
+                        .getAttribute('content')
+                        .replace(/[\s]*:+[\s]*네이버[\s]*뉴스/, '');
+                }catch(e){
+                    return "";
+                }
+            })()
+        },
+        "extraInfo": {}
+    };
+
+    
+    data.extraInfo.officeId = "055";
+    
+
+    try{
+        ma.init({
+            api: "https://ma.news.naver.com/l",
+            data: data
+        });
+    }catch(e){}
+}
+</script>
+
+
+<script type="text/javascript">
+
+if(typeof BMR !== "undefined"){
+	BMR.run('https://sp.naver.com/sp');
+}
+
+
+
+var eventType = "onpageshow" in window ? "pageshow" : "load";
+jQuery(window).on(eventType, function() {
+
+
+
+lcs_do();
+
+
+    try{
+        initMa();
+    }catch(e){}
+});
+</script>
+
+
+	<!-- //LCS -->
+</body>
+</html>
